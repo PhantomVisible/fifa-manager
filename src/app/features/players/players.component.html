@@ -1,1 +1,10 @@
 <h2>Players</h2>
+
+<div class="player-grid">
+  <a
+    *ngFor="let player of players$ | async"
+    [routerLink]="['/player', player.id]">
+    <app-player-card [player]="player"></app-player-card>
+  </a>
+</div>
+

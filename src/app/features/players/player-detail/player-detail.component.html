@@ -1,0 +1,12 @@
+<h2>Player Details</h2>
+
+<div *ngIf="player$ | async as player">
+  <app-player-card [player]="player"></app-player-card>
+
+  <div class="details">
+    <p><strong>Name:</strong> {{ player.name }}</p>
+    <p><strong>Position:</strong> {{ player.position }}</p>
+    <p><strong>Overall:</strong> {{ player.overall }}</p>
+    <p><strong>Age:</strong> {{ player.age }}</p>
+  </div>
+</div>

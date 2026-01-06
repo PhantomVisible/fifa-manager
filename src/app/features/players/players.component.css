@@ -1,0 +1,9 @@
+.player-grid {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}

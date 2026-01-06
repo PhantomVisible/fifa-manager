@@ -7,6 +7,7 @@ import { LeaguesComponent } from './features/leagues/leagues.component';
 import { ClubsComponent } from './features/clubs/clubs.component';
 import { PlayersComponent } from './features/players/players.component';
 import { SearchComponent } from './features/search/search.component';
+import { PlayerDetailComponent } from './features/players/player-detail/player-detail.component';
 
 export const routes: Routes = [
   {
@@ -18,7 +19,8 @@ export const routes: Routes = [
       { path: 'continents', component: ContinentsComponent },
       { path: 'leagues/:continentId', component: LeaguesComponent },
       { path: 'clubs/:leagueId', component: ClubsComponent },
-      { path: 'players/:clubId', component: PlayersComponent },
+      { path: 'players/:clubId',component: PlayersComponent },
+      { path: 'player/:playerId',component: PlayerDetailComponent },
       { path: 'search', component: SearchComponent }
     ]
   }

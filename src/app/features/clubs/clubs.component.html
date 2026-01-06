@@ -1,1 +1,9 @@
-<h2>Clubs</h2>
+<h2>Select a Club</h2>
+
+<div class="club-grid">
+  <a
+    *ngFor="let club of clubs$ | async"
+    [routerLink]="['/players', club.id]">
+    <app-team-card [club]="club"></app-team-card>
+  </a>
+</div>

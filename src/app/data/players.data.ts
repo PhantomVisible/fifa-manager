@@ -2,8 +2,8 @@ import { Player } from '../core/models/player.model';
 
 export const PLAYERS: Player[] = [
   {
-    id: 'saka',
-    name: 'Bukayo Saka',
+    id: 'haaland',
+    name: 'Erling Haaland',
     position: 'ST',
     overall: 90,
     age: 25,

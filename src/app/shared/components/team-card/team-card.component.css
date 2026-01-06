@@ -1,0 +1,17 @@
+.team-card {
+  width: 240px;
+  padding: 18px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #ffffff, #f2f2f2);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+  transition: transform 0.25s ease;
+  border: 2px solid #444;
+}
+
+.team-card:hover {
+  transform: scale(1.05);
+}
+
+.team-card h3 {
+  margin-bottom: 8px;
+}
