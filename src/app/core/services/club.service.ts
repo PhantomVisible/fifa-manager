@@ -1,12 +1,17 @@
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { DataService } from './data.service';
+import { Club } from '../models/club.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClubService {
-  constructor(private dataService: DataService) {}
+  clubs$!: Observable<Club[]>;
+
+  constructor(private dataService: DataService) {
+    this.clubs$ = this.dataService.clubs$; 
+  }
 
   getClubsByLeague(leagueId: string) {
     return this.dataService.clubs$.pipe(
