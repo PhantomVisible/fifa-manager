@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Player } from '../../../core/models/player.model';
 import { formatValue, formatWage, getRatingColor } from '../../../core/utils/player-rating.util';
+import { getPlayerImageUrl } from '../../../core/utils/player-image.util';
 
 @Component({
   selector: 'app-player-details',
@@ -25,15 +26,42 @@ import { formatValue, formatWage, getRatingColor } from '../../../core/utils/pla
         </button>
         
         <!-- Header with Player Photo Area -->
-        <div class="relative h-32 bg-gradient-to-r from-emerald-600 to-green-700">
-          <div class="absolute -bottom-12 left-6">
-            <div class="w-24 h-24 rounded-xl bg-gradient-to-br {{ratingColorClass}} flex items-center justify-center text-3xl font-bold text-white shadow-lg border-4 border-slate-800">
-              {{ player.overall }}
+        <div class="relative h-40 bg-gradient-to-r from-emerald-600 to-green-700 overflow-hidden">
+          <!-- Background Pattern -->
+          <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+          
+          <div class="absolute -bottom-4 left-6 flex items-end gap-4 z-10">
+            <!-- Player Photo -->
+            <div class="relative w-32 h-32">
+               <img [src]="playerImageUrl" 
+                   [alt]="player.short_name"
+                   class="w-full h-full object-contain drop-shadow-2xl filter brightness-110"
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+               
+               <!-- Fallback Rating Box -->
+               <div class="hidden absolute inset-0 rounded-xl bg-gradient-to-br {{ratingColorClass}} flex items-center justify-center text-4xl font-bold text-white shadow-lg border-4 border-slate-800">
+                  {{ player.overall }}
+               </div>
+            </div>
+
+            <!-- Rating Badge (if image is shown) -->
+            <div class="mb-4 w-12 h-12 rounded-lg bg-slate-900/90 border border-white/20 backdrop-blur flex items-center justify-center text-xl font-bold text-white shadow-xl">
+               <span [class]="getStatColor(player.overall)">{{ player.overall }}</span>
             </div>
           </div>
-          <div class="absolute bottom-3 left-36 right-4">
-            <h2 class="text-xl font-bold text-white truncate">{{ player.long_name }}</h2>
-            <p class="text-sm text-white/80">{{ player.player_positions }}</p>
+
+          <div class="absolute top-6 left-6 right-16">
+            <h2 class="text-2xl font-bold text-white truncate drop-shadow-md">{{ player.long_name }}</h2>
+            <div class="flex items-center gap-2 mt-1">
+              <span class="px-2 py-0.5 rounded bg-black/40 text-xs font-semibold text-white border border-white/10 backdrop-blur-sm">
+                {{ player.player_positions }}
+              </span>
+              <img *ngIf="player.nationality" 
+                   [src]="'https://flagcdn.com/24x18/' + getCountryCode(player.nationality) + '.png'"
+                   [title]="player.nationality"
+                   class="h-4 w-6 object-cover rounded shadow-sm opacity-90"
+                   onerror="this.style.display='none'">
+            </div>
           </div>
         </div>
         
@@ -152,6 +180,10 @@ export class PlayerDetailsComponent {
     return getRatingColor(this.player.overall);
   }
 
+  get playerImageUrl(): string {
+    return getPlayerImageUrl(this.player.sofifa_id);
+  }
+
   formatValue = formatValue;
   formatWage = formatWage;
 
@@ -160,6 +192,18 @@ export class PlayerDetailsComponent {
     if (stat >= 70) return 'text-yellow-400';
     if (stat >= 50) return 'text-orange-400';
     return 'text-red-400';
+  }
+
+  getCountryCode(nationality: string): string {
+    const map: { [key: string]: string } = {
+      'Argentina': 'ar', 'Portugal': 'pt', 'Slovenia': 'si', 'Poland': 'pl', 'Brazil': 'br',
+      'Belgium': 'be', 'France': 'fr', 'Germany': 'de', 'England': 'gb-eng', 'Spain': 'es',
+      'Italy': 'it', 'Netherlands': 'nl', 'Croatia': 'hr', 'Uruguay': 'uy', 'Senegal': 'sn',
+      'Egypt': 'eg', 'Gabon': 'ga', 'Norway': 'no', 'Korea Republic': 'kr', 'Algeria': 'dz',
+      'Austria': 'at', 'Denmark': 'dk', 'Sweden': 'se', 'Switzerland': 'ch', 'USA': 'us',
+      'Canada': 'ca', 'Mexico': 'mx', 'Colombia': 'co', 'Chile': 'cl', 'Japan': 'jp'
+    };
+    return map[nationality] || 'un';
   }
 
   onBackdropClick(event: MouseEvent) {
