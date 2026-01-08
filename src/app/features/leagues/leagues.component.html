@@ -1,9 +1,0 @@
-<h2>Select a League</h2>
-
-<ul>
-  <li *ngFor="let league of leagues$ | async">
-    <a [routerLink]="['/clubs', league.id]">
-      {{ league.name }}
-    </a>
-  </li>
-</ul>

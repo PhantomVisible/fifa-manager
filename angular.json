@@ -24,6 +24,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "**/*",
+                "input": "assets",
+                "output": "assets"
               }
             ],
             "styles": [
@@ -99,6 +104,6 @@
     }
   },
   "cli": {
-    "analytics": "009e3c1b-cfd4-43a6-9968-b6baf67f0dff"
+    "analytics": false
   }
 }

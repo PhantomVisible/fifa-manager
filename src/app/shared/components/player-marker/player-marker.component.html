@@ -1,0 +1,22 @@
+@if (isBench) {
+<!-- Compact card for bench -->
+<div class="w-24 bg-slate-800 rounded-lg p-2 border border-slate-700 hover:border-green-500 transition-colors">
+  <div class="text-center">
+    <div
+      class="w-10 h-10 mx-auto rounded-full bg-gradient-to-br from-green-600 to-emerald-700 flex items-center justify-center text-white font-bold text-sm mb-1">
+      {{ player.overall }}
+    </div>
+    <p class="text-xs font-semibold text-white truncate" [title]="player.short_name">{{ player.short_name }}</p>
+    <p class="text-[10px] text-slate-400 truncate">{{ player.player_positions.split(',')[0] }}</p>
+    <p class="text-[10px] text-slate-500 truncate">{{ player.club_name }}</p>
+  </div>
+</div>
+} @else {
+<!-- On-pitch marker -->
+<div
+  class="w-12 h-12 rounded-full bg-gradient-to-br from-green-600 to-emerald-800 border-2 border-white shadow-lg flex items-center justify-center">
+  <span class="text-white font-bold text-xs">{{ player.overall }}</span>
+</div>
+<p class="absolute -bottom-5 text-[9px] text-white bg-black/60 px-1 rounded whitespace-nowrap">{{ player.short_name }}
+</p>
+}

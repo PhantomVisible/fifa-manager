@@ -1,9 +1,0 @@
-<h2>Select a Continent</h2>
-
-<ul>
-  <li *ngFor="let continent of continents$ | async">
-    <a [routerLink]="['/leagues', continent.id]">
-      {{ continent.name }}
-    </a>
-  </li>
-</ul>

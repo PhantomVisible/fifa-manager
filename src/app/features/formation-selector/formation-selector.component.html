@@ -1,0 +1,3 @@
+<select class="p-2 rounded border" [ngModel]="selected" (ngModelChange)="select.emit($event)">
+  <option *ngFor="let f of formations" [value]="f.name">{{ f.name }}</option>
+</select>

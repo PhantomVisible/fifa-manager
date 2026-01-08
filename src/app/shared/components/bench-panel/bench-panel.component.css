@@ -1,0 +1,6 @@
+.bench-panel {
+  min-height: 60px;
+  max-height: 200px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}

@@ -1,0 +1,21 @@
+<div cdkDropList id="bench" [cdkDropListData]="players" class="flex flex-wrap gap-2 p-2 min-h-[100px]"
+  [cdkDropListConnectedTo]="[]">
+
+  @for (player of players; track player.sofifa_id) {
+  <div cdkDrag [cdkDragData]="player"
+    class="cursor-grab active:cursor-grabbing hover:scale-105 transition-transform touch-none">
+    <app-player-marker [player]="player" [isBench]="true"></app-player-marker>
+
+    <div *cdkDragPreview class="opacity-90 scale-105">
+      <app-player-marker [player]="player" [isBench]="true"></app-player-marker>
+    </div>
+    <div *cdkDragPlaceholder class="w-[60px] h-[60px] rounded-full bg-white/5 border border-white/10"></div>
+  </div>
+  }
+
+  @if (players.length === 0) {
+  <div class="w-full h-20 flex items-center justify-center text-slate-500 font-medium text-sm italic">
+    No players found matching current filters.
+  </div>
+  }
+</div>

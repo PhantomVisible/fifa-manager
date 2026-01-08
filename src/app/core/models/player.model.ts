@@ -1,8 +1,50 @@
 export interface Player {
-  id: string;
-  name: string;
-  position: string;
-  overall: number;
+  sofifa_id: number;
+  player_url: string;
+  short_name: string;
+  long_name: string;
   age: number;
-  clubId: string;
+  dob: string;
+  height_cm: number;
+  weight_kg: number;
+  nationality: string;
+  club_name: string;
+  league_name: string;
+  league_rank: number;
+  overall: number;
+  potential: number;
+  value_eur: number;
+  wage_eur: number;
+  player_positions: string; // e.g., "RW, ST, CF"
+  preferred_foot: string;
+  international_reputation: number;
+  weak_foot: number;
+  skill_moves: number;
+  work_rate: string;
+  body_type: string;
+  real_face: string;
+  release_clause_eur: number;
+  player_tags: string;
+  team_position: string;
+  team_jersey_number: number;
+  loaned_from: string;
+  joined: string;
+  contract_valid_until: number;
+  nation_position: string;
+  nation_jersey_number: number;
+  pace: number;
+  shooting: number;
+  passing: number;
+  dribbling: number;
+  defending: number;
+  physic: number;
+  gk_diving: string | number;
+  gk_handling: string | number;
+  gk_kicking: string | number;
+  gk_reflexes: string | number;
+  gk_speed: string | number;
+  gk_positioning: string | number;
+  player_traits: string;
+  // ...other fields as needed
+  [key: string]: any;
 }

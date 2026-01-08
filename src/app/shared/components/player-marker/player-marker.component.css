@@ -1,0 +1,6 @@
+.player-marker {
+  transition: box-shadow 0.2s;
+}
+.player-marker:active {
+  box-shadow: 0 0 0 4px #38b2ac;
+}
