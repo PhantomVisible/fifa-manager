@@ -3,25 +3,25 @@
   <header class="bg-slate-950/50 backdrop-blur-md border-b border-white/10 p-4 sticky top-0 z-50">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
       <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-green-500 to-emerald-700 flex items-center justify-center shadow-lg shadow-green-500/20">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
+        <div
+          class="w-10 h-10 rounded-full bg-gradient-to-tr from-green-500 to-emerald-700 flex items-center justify-center shadow-lg shadow-green-500/20">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
           </svg>
         </div>
-        <h1 class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400">FIFA Manager</h1>
+        <h1 class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400">FIFA 21
+          Manager</h1>
       </div>
-      
+
       <div class="flex items-center gap-3 bg-slate-800/50 p-1.5 rounded-xl border border-white/5">
-        <app-formation-selector
-          [formations]="formationService.formations"
-          [selected]="selectedFormation()"
+        <app-formation-selector [formations]="formationService.formations" [selected]="selectedFormation()"
           (select)="onFormationSelect($event)"></app-formation-selector>
-        
+
         <div class="w-px h-8 bg-white/10 mx-1"></div>
 
-        <app-edit-toggle
-          [editMode]="editMode()"
-          (toggle)="onEditToggle($event)"></app-edit-toggle>
+        <app-edit-toggle [editMode]="editMode()" (toggle)="onEditToggle($event)"></app-edit-toggle>
       </div>
     </div>
   </header>
